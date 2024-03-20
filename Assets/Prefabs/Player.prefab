@@ -200,7 +200,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
   turnSpeed: 450
+  body: {fileID: 2594094831868379979}
 --- !u!1 &2393786355569383201
 GameObject:
   m_ObjectHideFlags: 0

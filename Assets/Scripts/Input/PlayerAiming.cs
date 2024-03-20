@@ -1,31 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAiming : MonoBehaviour
 {
     public Camera cam;
 
+    public LayerMask groundMask;
     public float turnSpeed = 450;
-    Quaternion targetRotation;
 
     public Transform body;
     private void Awake()
     {
         cam = Camera.main;
     }
-
     private void Update()
     {
-        ControlMouse();
+        Aim();
     }
-    void ControlMouse()
+    private (bool success, Vector3 position) GetMousePosition()
     {
-        Vector3 mousePosition = Input.mousePosition;
+        var ray = cam.ScreenPointToRay(Input.mousePosition); // ray from camera
+        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
+            return (success: true, position: hitInfo.point); // return true and mouse position as a vector3
+        else
+            return (success: false, position: Vector3.zero); // return false
+    }
+    private void Aim()
+    {
+        var (success, position) = GetMousePosition();
+        if(success)
+        {
+            // calculate direction
+            var direction = position - transform.position;
 
-        mousePosition = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, cam.transform.position.y - body.transform.position.y));
-        targetRotation = Quaternion.LookRotation(mousePosition - new Vector3(body.transform.position.x, 0, body.transform.position.z));
-        body.transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(body.transform.eulerAngles.y, targetRotation.eulerAngles.y, turnSpeed * Time.deltaTime);
+            //ingore height
+            direction.y = 0;
 
+            // look in direction
+            body.forward = direction;
+        }
     }
 }
