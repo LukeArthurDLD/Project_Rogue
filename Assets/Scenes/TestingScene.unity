@@ -365,11 +365,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1239651740806304467, guid: c922e5d2ddc7fe34796dcc3a8ebacf74, type: 3}
   m_PrefabInstance: {fileID: 8515576684916809411}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1581100369 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2594094831868379979, guid: c922e5d2ddc7fe34796dcc3a8ebacf74, type: 3}
-  m_PrefabInstance: {fileID: 8515576684916809411}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2076618142
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +377,7 @@ GameObject:
   - component: {fileID: 2076618146}
   - component: {fileID: 2076618145}
   - component: {fileID: 2076618144}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,10 +527,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 963194227}
-    - target: {fileID: 6706841787163605675, guid: c922e5d2ddc7fe34796dcc3a8ebacf74, type: 3}
-      propertyPath: body
-      value: 
-      objectReference: {fileID: 1581100369}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

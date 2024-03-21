@@ -186,6 +186,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   isGrounded: 1
+  useRelativeMovement: 1
   orientation: {fileID: 5137172835796136978}
 --- !u!114 &6706841787163605675
 MonoBehaviour:
@@ -199,7 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd9d3f4ed9e22b49bb1cdab3959c786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 64
