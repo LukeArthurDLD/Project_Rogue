@@ -7,28 +7,28 @@ public class InputManager : MonoBehaviour
     private PlayerInput.OnFootActions onFoot;
 
     private PlayerMovement playerMovement;
-    // interact
-    // onfoot.interact.triggered
+    private Weapon currentWeapon;
+
     private void Awake()
     {
         playerInput = new PlayerInput();
         onFoot = playerInput.OnFoot;
 
+        // get components
         playerMovement = GetComponent<PlayerMovement>();
+        currentWeapon = GetComponentInChildren<Weapon>();
 
-        onFoot.Jump.performed += ctx => playerMovement.Jump();
+        onFoot.Jump.performed += ctx => playerMovement.Jump(); // when button pressed
+
+        onFoot.Attack.started += ctx => currentWeapon.StartAttack(); // when input starts
+        onFoot.Attack.canceled += ctx => currentWeapon.EndAttack(); // when input ends
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         // Tell player movement to move by reading movement value
         playerMovement.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
-    }
-    private void LateUpdate()
-    {
-
-    }
+    }    
     private void OnEnable()
     {
         onFoot.Enable();
